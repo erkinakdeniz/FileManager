@@ -241,12 +241,12 @@ namespace FileManager_Util
         {
             if (filePath.Length > 0)
             {
+                 System.GC.Collect();
+                 System.GC.WaitForPendingFinalizers();
                 foreach (var deleteFilePath in filePath)
                 {
                     if (File.Exists(deleteFilePath))
                     {
-                        System.GC.Collect();
-                        System.GC.WaitForPendingFinalizers();
                         File.Delete(deleteFilePath);
                     }
                 }
